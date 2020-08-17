@@ -7,7 +7,9 @@ App Description: Have you gone to NASA.gov looking for photos taken by the Curio
 
 API:https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?
 
-API Snippet: The first two results for Curiosity's chemcam June 12th, 2020 https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2020-6-12&camera=chemcam&api_key=DEMO_KEY {
+``` Code Snippet: The first two results for Curiosity's chemcam June 12th, 2020 
+
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2020-6-12&camera=chemcam&api_key=DEMO_KEY {
     "photos": [
         {
             "id": 750116,
@@ -49,7 +51,7 @@ API Snippet: The first two results for Curiosity's chemcam June 12th, 2020 htt
         }
     ]
 }
-
+```
 Wireframe:
 https://hosting.photobucket.com/images/l66/aabozek/wireframe.png
 https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.png
