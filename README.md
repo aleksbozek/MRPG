@@ -87,3 +87,17 @@ Friday:Profit
 Format:[Priority Matrix](url)
 
 **Timeframes:**
+
+Objective | Estimated Time | Actual Time
+------------ | ------------- | -------------
+Citing Credits | 30 minutes | ??
+Media Query Styling | 1 hour | ??
+HTML Skeleton | 1 hour | ??
+API Link With Multiple Variables Functions | 1 hour | ??
+Dropdown Selectors w/in Flexbox | 1.5 hours | ??
+Camera Description Hovering Event Listeners | 2 hours | ??
+CSS Styling | 3 hours | ??
+Dropdown Selector Boxes Cooperating With API | 3 hours | ??
+Next & Previous Photo | 3 hours | ??
+Post Minimum Viable Product Goals | 3+ hours | ??
+End : | ~19 hours | ??
