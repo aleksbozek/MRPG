@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script defer src="./scipt.js"></script>
+  <title>Mars Rover Picture Grabber</title>
+</head>
+<body>
+  <div class="title">Title
+    <div class="title description">Description of searching</div>
+  </div>
+
+  <div id="selector-holder">
+    <form class="selector">
+      <select name="select-cam" id="select-cam"></select>
+    </form>
+    <form class="selector">
+      <select name="select-year" id="select-year"></select>
+    </form>
+    <form class="selector">
+      <select name="select-month" id="select-month"></select>
+    </form>
+    <form class="selector">
+      <select name="select-day" id="select-day"></select>
+    </form>
+    <form>
+      <button>Search!</button>
+    </form>
+  </div>
+
+  <div id="cam-hover">Camera description / purpose here</div>
+
+  <div id="display">Picture grabbed will go here</div>
+
+  <div></div>
+  <div class="next up"> Next photo in array </div>
+  <div class="next down"> Previous photo in array</div>
+
+
+  <footer> credits and contact information</footer>
+
+</body>
+</html>
