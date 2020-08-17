@@ -58,48 +58,55 @@ https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2020-
 }
 ```
 **Wireframe:**
-![Wireframe](https://hosting.photobucket.com/images/l66/aabozek/wireframe.png)
-Format: ![Wireframe](url)
+(https://hosting.photobucket.com/images/l66/aabozek/wireframe.png)
 
 https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.png
 
 
-**MVP:** -Website layout is clean
--dropdown selector for the different cameras
--dropdown selectors for date, where the days of given month are accurate
--able to navigate directly forward or backward of current photo
--provide descriptions of the cameras aka their purpose
+**MVP:**
+
+- Website layout is clean
+- dropdown selector for the different cameras
+- dropdown selectors for date, where the days of given month are accurate
+- able to navigate directly forward or backward of current photo
+- provide descriptions of the cameras aka their purpose
+
 **Post-MVP:**
--dropdown selector for totally random photo from the day in question(no need to be specific with cameras)
--next & previous photo have a thumbnail preview
--leap years have Feb 29th option in dropdown selector
--dropdown selector for Opportunity & Spirit rovers
+
+- dropdown selector for totally random photo from the day in question(no need to be specific with cameras)
+- next & previous photo have a thumbnail preview
+- leap years have Feb 29th option in dropdown selector
+- dropdown selector for Opportunity & Spirit rovers
+
 **Way-Post-MVP:**
--find an API for Mars' moons Deimos & Phobos
+- find an API for Mars' moons Deimos & Phobos
+
 
 **Goals:**
-Monday:Website skeleton; get API search variables in url working
-Tuesday:Dropdown selectors as flex boxes; @media layout
-Wednesday:Navigating next / previous photo; minor styling
-Thursday:Clean up site w/ css; tackle any loose ends; attempt post-mvp
-Friday:Profit
+Day | Objective | Status
+------------ | ------------- | -------------
+M 8/17/20 | Website skeleton; get API search variables in url working | ??
+T 8/18/20 | Dropdown selectors as flex boxes; @media layout | ??
+W 8/19/20 | Navigating next / previous photo; minor styling | ??
+T 8/19/20 | Clean up site w/ css; tackle any loose ends; attempt post-mvp | ??
+F 8/19/20 | Profit | ??
 
 **Priority Matrix:**
 ![Priority Matrix](https://hosting.photobucket.com/images/l66/aabozek/Priority_Matrix.png)
-Format:[Priority Matrix](url)
 
 **Timeframes:**
 
-Objective | Estimated Time | Actual Time
------------- | ------------- | -------------
-Citing Credits | 30 minutes | ??
-Media Query Styling | 1 hour | ??
-HTML Skeleton | 1 hour | ??
-API Link With Multiple Variables Functions | 1 hour | ??
-Dropdown Selectors w/in Flexbox | 1.5 hours | ??
-Camera Description Hovering Event Listeners | 2 hours | ??
-CSS Styling | 3 hours | ??
-Dropdown Selector Boxes Cooperating With API | 3 hours | ??
-Next & Previous Photo | 3 hours | ??
-Post Minimum Viable Product Goals | 3+ hours | ??
-End : | ~19 hours | ??
+Objective | Priority | Estimated Time | Time Invested | Actual Time
+------------ | ------------- | ------------- | ------------- | -------------
+Citing Credits | L |30 minutes | ?? | ??
+Media Query Styling | H | 2 hours | ?? | ??
+HTML Skeleton | M | 1 hour | ?? | ??
+API Link With Multiple Variables Functions | H | 3 hours | ?? | ??
+Dropdown Selectors w/in Flexbox | M | 2.5 hours | ?? | ??
+Camera Description Hover Event Listeners | L | 2 hours | ?? | ??
+Background Styling | L | 1 hour | ?? | ??
+Button Styling | H | 3 hours | ?? | ??
+Dropdown Selector Boxes Cooperating With API | H | 3 hours | ?? | ??
+Next & Previous Photo | M | 3 hours | ?? | ??
+Post Minimum Viable Product Goals | L | 3+ hours | ?? | ??
+End : | (H)igh (M)edium (L)ow | ~24 hours | ?? | ??
