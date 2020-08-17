@@ -6,6 +6,7 @@
 App Description: Have you gone to NASA.gov looking for photos taken by the Curiosity rover only to be overwhelmed by the vastness of the gallery?  It's full of planets, satelites, and even selfies from the ISS!  With the Mars Picture Generator we'll grab a rover picture for you!  No more sifting through pages upon pages of NASA's vague pictures.  We'll even narrow your search based on the specific camera that holds your interest.  From this grabbed picture you'll be able to view the immediate ones taken before and after.  This'll provide you with a play-by-play of the things the rover captures.  Also, if the photo you're given doesn't pique your interest, you can always hit the generator again, or give it another day to work with!
 
 **API:** https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?
+**API Source:** https://api.nasa.gov  @ the bottom of the page w/in the tab *Mars Rover Photos*
 
 **Code Snippet Example:** The first two results for Curiosity's chemcam June 12th, 2020 
 
