@@ -59,8 +59,8 @@ https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2020-
 ![Wireframe](https://hosting.photobucket.com/images/l66/aabozek/wireframe.png)
 Format: ![Wireframe](url)
 
-![Wireframe](https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.png)
-Format: ![Wireframe](url)
+https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.png
+
 
 **MVP:** -Website layout is clean
 -dropdown selector for the different cameras
