@@ -30,11 +30,13 @@ function removePicture() {
 
 const displayPhoto = (photo) => {
   let picture = `
-    <img src=${photo.img_src} alt="Photo ID #${photo.id}" style="width: 65%; height: auto">
+    <img src=${photo.img_src} alt="Photo ID #${photo.id}" style="width: 65vw; height: auto">
 `
 // style="width: 500px; height: auto;"
   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  
   console.log(photo)
+  
 }
 
 

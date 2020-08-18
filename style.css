@@ -1,27 +1,49 @@
 *{
   margin: 0 auto;
 }
+p,li,div{
+  color: silver;
+
+}
 .title {
   display: block;
   border: 3px solid rgb(28, 28, 184);
   text-align: center;
   font-size: 35px;
-  
+  color: black;
 }
 .description{
   width: 65vw;
   font-size: 20px;
-  text-align: justify
+  text-align: justify;
+  color: black;
+  padding: 7px;
 }
 .selector,
 button{
   width: 10vw;
   padding: 3px;
   border: 1px dotted white;
+  flex-flow: row wrap;
 
 }
-
-#selector-holder{
+ul{
+order:0;
+}
+#cam-hover{
+  order:1;
+}
+#display{
+  order:2;
+}
+.next{
+  align-content: center;
+  display: inline-block;
+  margin: 0 auto;
+  color: black;
+}
+#selector-holder,
+aside{
   display: flex;
   flex-flow: row wrap;
   width: 77%;
@@ -29,21 +51,28 @@ button{
   background-color: black;
   border: 3px dotted white;
   padding: 3px;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  order:1;
 }
 
 #select-month,
 #select-day{
-  width: 50px;
+  width: 35px;
 }
 
 
 @media (min-width: 1500px){
 
-    #selector-holder{
-      flex-flow: column wrap;
-      width: 15%;
-      justify-content: space-around;
-      height: 77vh;
-    }
+  #selector-holder{
+    flex-flow: column wrap;
+    width: 200px;
+    height: 77vh;
+  }
+
+  .description{
+    padding: 3vh 7vw;
+  }
+
+
+
 }

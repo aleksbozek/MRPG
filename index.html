@@ -11,16 +11,15 @@
 <body>
   <div class="title">Mars Curiosity Picture Grabber
     <div class="title description"> 
-      <p> Mars' Curiosity Rover landed August 6th, 2012.  When entering search parameters please use the numbers for all three fields.  For example, if you wanted to find photos from the day after Curiosity landed, your entries would be 2012, 8, and 7, rather than the standard text of Tuesday, August 7th, 2012.</p>
+      Mars' Curiosity Rover landed August 6th, 2012.  When entering search parameters please use the numbers for all three fields.  For example, if you wanted to find photos from the day after Curiosity landed, your entries would be 2012, 8, and 7, rather than the standard text of Tuesday, August 7th, 2012.
       <br><br>
-      <p>*NOTE* There are times when the rover's activity is low.  Some days may yield hundreds of photos, others may offer none.</p>
+      *NOTE* There are times when the rover's activity is low.  Some days may yield hundreds of photos, others may offer none.
       <br>
       
     </div>
   </div>
   <!-- I'll update the search parameters once I figure out how to limit the months & days of 2012 & 2020; as well as how to implement February 29th into leap years. -->
-  <div>
-    <p>Months:
+  <aside>
     <ul>
       <li>1 =January</li>
       <li>2 =February</li>
@@ -34,8 +33,10 @@
       <li>10 =October</li>
       <li>11 =November</li>
       <li>12 =December</li>
-    </ol>
-    </p>
+    </ul>
+    
+
+    
     <div id="selector-holder">
       <form class="selector">
         <select name="select-cam" id="select-cam">
@@ -92,15 +93,15 @@
         <button>Search!</button>
       </form>
     </div>
-  </div>
+  
   <div id="cam-hover">Camera description / purpose here</div>
 
   <div id="display">Picture grabbed will go here</div>
-
-  <div></div>
+  </aside>
+  
   <div class="next up"> Next photo in array </div>
   <div class="next down"> Previous photo in array</div>
-
+  
 
   <footer> credits and contact information</footer>
 
