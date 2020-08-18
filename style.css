@@ -37,16 +37,18 @@ order:0;
   order:2;
 }
 .next{
-  align-content: center;
-  display: inline-block;
+  
+  display: flex;
+  flex-direction: row;
   margin: 0 auto;
   color: black;
+  border: 2px solid black;
 }
 #selector-holder,
 aside{
   display: flex;
   flex-flow: row wrap;
-  width: 88%;
+  width: 96%;
   margin: 0 auto;
   background-color: black;
   border: 3px dotted white;
@@ -66,7 +68,7 @@ aside{
   #selector-holder{
     flex-flow: column wrap;
     width: 200px;
-    height: 77vh;
+    height: auto;
   }
 
   .description{
