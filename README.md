@@ -86,7 +86,7 @@ https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.pn
 Day | Objective | Status
 ------------ | ------------- | -------------
 M 8/17/20 | Website skeleton; get API search variables in url working | Complete (finished Tuesday AM)
-T 8/18/20 | Dropdown selectors as flex boxes; @media layout | 3/4
+T 8/18/20 | Dropdown selectors as flex boxes; @media layout | 3/4 done~ postponing media til JS is finalized
 W 8/19/20 | Navigating next / previous photo; minor styling | getting a head start Tuesday
 T 8/19/20 | Clean up site w/ css; tackle any loose ends; attempt post-mvp | ??
 F 8/19/20 | Profit | ??
@@ -99,15 +99,15 @@ F 8/19/20 | Profit | ??
 Objective | Priority | Estimated Time | Time Invested | Actual Time
 ------------ | ------------- | ------------- | ------------- | -------------
 Citing Credits | L |30 minutes | ?? | ??
-Media Query Styling | H | 2 hours | ?? | ??
+Media Query Styling | H | 2 hours | 1hr | ??
 HTML Skeleton | M | 1 hour | 1.5hrs | ??
 API Link With Multiple Variables Functions | H | 3 hours | 1.5 hrs | ??
 Dropdown Selectors w/in Flexbox | H | 2.5 hours | 2 hrs | ??
-Camera Description Hover Event Listeners | L | 2 hours | ?? | ??
+Camera Description Hover Event Listeners | L | 2 hours | 45min | ??
 Background Styling | L | 1 hour | 10min | ??
-Button Styling | M | 3 hours | ?? | ??
+Button Styling | M | 3 hours | 1hr | ??
 Dropdown Selector Boxes Cooperating With API | H | 3 hours | 1.5hrs | ??
-Next & Previous Photo | M | 3 hours | ?? | ??
+Next & Previous Photo | H | 3 hours | 30min | ??
 Post Minimum Viable Product Goals | L | 5 hours | ?? | ??
-Reviewing Tutorials | H | 5 hours | 1hr | ??
+Reviewing Tutorials | H | 5 hours | 1.5hrs | ??
 End : | (H)igh (M)edium (L)ow | ~31 hours | ?? | ??

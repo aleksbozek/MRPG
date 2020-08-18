@@ -67,7 +67,7 @@ const camText = () => {
   const camDes = document.querySelector('#cam-hover')
   const c = document.querySelector('#select-cam').value
   if (c == 'MAST') {
-    camDes.textContent = `The Mast Camera takes color images, three-dimensional stereo images, and color video footage of the martian terrain and has a powerful zoom lens.
+    camDes.innerHTML = `The Mast Camera takes color images, three-dimensional stereo images, and color video footage of the martian terrain and has a powerful zoom lens.<br> <br>
 
     Like the cameras on the Mars Exploration Rovers that landed on the red planet in 2004, the Mastcam design consists of two duplicate camera systems mounted on a mast extending upward from the Mars Science Laboratory rover deck. The cameras function much like human eyes, producing three-dimensional stereo images by combining two side-by-side images taken from slightly different positions.`
   } else if (c == 'CHEMCAM') {
