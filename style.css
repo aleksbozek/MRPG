@@ -5,3 +5,11 @@
   text-align: center;
   
 }
+
+#selector-holder{
+
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 100px;
+  
+}

@@ -40,6 +40,7 @@ const displayPhoto = (photo) => {
 
 const button = document.querySelector('button')
 
+
 button.addEventListener('click', (e) => {
   e.preventDefault()
   const y = document.querySelector('#select-year').value
@@ -50,6 +51,13 @@ button.addEventListener('click', (e) => {
   getPic(y, m, d, c)
 })
 
+
+// const next = document.querySelector('up')
+// const previous = document.querySelector('down')
+// next.addEventListener('click', (e) => {
+//   e.preventDefault()
+
+// })
 
 
 // const monthSelected = document.getElementById('#select-month')
