@@ -10,24 +10,42 @@ async function getPic(year, month, day, camera) {
     console.log(res)
     let pictures = res.data.photos
     console.log(pictures)
-    const rndm = Math.floor((Math.random() * pictures.length))
-    console.log(rndm)
-    const rndmPhoto = pictures[rndm]
-    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
-    document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-    const nextPic = pictures[rndm - 1]
-    const prevPic = pictures[rndm + 1]
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-    pictures.push(rndm)
+    addPics(pictures)
+    // pictures.push(rndm)
     console.log(pictures)
     return pictures
   } catch (error) {
     console.log(`Error: ${error}`)
   }
 }
+
+
+const addPics = (picArray) => {
+  const rndm = Math.floor((Math.random() * picArray.length))
+  console.log(rndm)
+  const rndmPhoto = picArray[rndm]
+  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+  document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  const nextPic = picArray[rndm - 1]
+  const prevPic = picArray[rndm + 1]
+
+  if (nextpic = -1) {
+    document.querySelector('.up').textContent = `There are no additional pictures.`
+  } else {
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+  }
+
+  if (prevPic > picArray.lenght) {
+    document.querySelector('.down').textContent = `There are no additional pictures.`
+  } else {
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+  }
+  
+
+}
+
 
 function removePicture() {
   const photo = document.querySelector('#display')
@@ -57,6 +75,7 @@ button.addEventListener('click', (e) => {
 //pop to get the current photo's index
 const next = document.querySelector('.up')
 const previous = document.querySelector('.down')
+
 next.addEventListener('click', (e) => {
   e.preventDefault()
 
@@ -66,7 +85,7 @@ next.addEventListener('click', (e) => {
 const camText = () => {
   const camDes = document.querySelector('#cam-hover')
   const c = document.querySelector('#select-cam').value
-  if (c == 'MAST') {
+  if (c == 'MAST') {//innerHTML to allow the line breaks between the two paragraphs
     camDes.innerHTML = `The Mast Camera takes color images, three-dimensional stereo images, and color video footage of the martian terrain and has a powerful zoom lens.<br> <br>
 
     Like the cameras on the Mars Exploration Rovers that landed on the red planet in 2004, the Mastcam design consists of two duplicate camera systems mounted on a mast extending upward from the Mars Science Laboratory rover deck. The cameras function much like human eyes, producing three-dimensional stereo images by combining two side-by-side images taken from slightly different positions.`
@@ -78,7 +97,7 @@ const camText = () => {
   }
 
 }
-
+//This initiates the change of camera description
 const camBox = document.querySelector('#select-cam')
 camBox.addEventListener('mouseout', camText)
 

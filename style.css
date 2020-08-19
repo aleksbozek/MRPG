@@ -38,11 +38,17 @@ order:0;
 }
 .next{
   
-  display: flex;
-  flex-direction: row;
+  display: inline-block;
   margin: 0 auto;
   color: black;
   border: 2px solid black;
+  padding: 50px 10vw;
+}
+.up{
+  float: left;
+}
+.down{
+  float: right;
 }
 #selector-holder,
 aside{
