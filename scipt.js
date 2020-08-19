@@ -8,7 +8,7 @@ async function getPic(year, month, day, camera) {
     removePicture()
     const res = await axios.get(url)
     console.log(res)
-    let pictures = res.data.photos
+    var pictures = res.data.photos
     console.log(pictures)
     addPics(pictures)
     // pictures.push(rndm)
@@ -18,35 +18,6 @@ async function getPic(year, month, day, camera) {
     console.log(`Error: ${error}`)
   }
 }
-
-
-const addPics = (picArray) => {
-  const rndm = Math.floor((Math.random() * picArray.length))
-  console.log(rndm)
-  const rndmPhoto = picArray[rndm]
-  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
-  document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-  const nextPic = picArray[rndm - 1]
-  const prevPic = picArray[rndm + 1]
-
-  if (nextpic = -1) {
-    document.querySelector('.up').textContent = `There are no additional pictures.`
-  } else {
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-  }
-
-  if (prevPic > picArray.lenght) {
-    document.querySelector('.down').textContent = `There are no additional pictures.`
-  } else {
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-  }
-  
-
-}
-
-
 function removePicture() {
   const photo = document.querySelector('#display')
   const photo2 = document.querySelector('.up')
@@ -57,6 +28,42 @@ function removePicture() {
     photo3.removeChild(photo3.lastChild)
   }
 }
+
+
+const addPics = (picArray) => {
+  const rndm = Math.floor((Math.random() * picArray.length))
+  console.log(rndm)
+  const rndmPhoto = picArray[rndm]
+  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+  document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  console.log(`rndm # = ${rndm}`)
+
+  
+  
+
+  if (rndm - 1 == -1) {
+    document.querySelector('.up').innerHTML = `Above is the last photo taken<br>by the camera this day.`
+  } else {
+    const nextPic = picArray[rndm -1]
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.up').innerHTML = `Next Photo<br>`
+    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+  }
+
+  if (rndm + 1 > picArray.lenght) {
+    document.querySelector('.down').innerHTML = `There are no prior pictures taken<br>by the camera this day.`
+  } else {
+    const prevPic = picArray[rndm + 1]
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.down').innerHTML = `Previous Photo<br>`
+    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+  }
+  
+
+}
+
+
+
 
 const button = document.querySelector('button')
 

@@ -17,18 +17,21 @@ p,li,div{
   font-size: 20px;
   text-align: justify;
   color: black;
-  padding: 7px;
+  padding: 5vh 5vw;
+  margin: 2vh auto;
 }
 .selector,
 button{
   width: 10vw;
   padding: 3px;
-  border: 1px dotted white;
+  border: 1px dotted gray;
   flex-flow: row wrap;
 
 }
 ul{
 order:0;
+width: 215px;
+height: 415px;
 }
 #cam-hover{
   order:1;
@@ -39,10 +42,11 @@ order:0;
 .next{
   
   display: inline-block;
-  margin: 0 auto;
+  margin: auto 7vw;
   color: black;
-  border: 2px solid black;
-  padding: 50px 10vw;
+  border: 2px dotted gray;
+  padding: 50px 7vw;
+  background-color: silver;
 }
 .up{
   float: left;
@@ -68,6 +72,12 @@ aside{
   width: 35px;
 }
 
+footer{
+  margin: 420px auto;
+  text-align: center;
+  background-color: silver;
+  border: 2px dotted black;
+}
 
 @media (min-width: 1500px){
 
@@ -78,9 +88,12 @@ aside{
   }
 
   .description{
-    padding: 3vh 7vw;
+    padding: 10vh 10vw;
+    margin: 7vh 7vw;
   }
 
-
+  ul{
+    order: -1;
+  }
 
 }
