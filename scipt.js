@@ -31,18 +31,19 @@ function removePicture() {
 
 
 const addPics = (picArray) => {
-  const rndm = Math.floor((Math.random() * picArray.length))
+  var rndm = Math.floor((Math.random() * picArray.length))
   console.log(rndm)
   const rndmPhoto = picArray[rndm]
   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-  console.log(`rndm # = ${rndm}`)
-
-  
-  
+  // console.log(`rndm # = ${rndm}`)
 
   if (rndm - 1 == -1) {
-    document.querySelector('.up').innerHTML = `Above is the last photo taken<br>by the camera this day.`
+    const rndmN = picArray.length - 1
+    const nextPic = picArray[rndmN]
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
+    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   } else {
     const nextPic = picArray[rndm -1]
     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
@@ -50,8 +51,11 @@ const addPics = (picArray) => {
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   }
 
-  if (rndm + 1 > picArray.lenght) {
-    document.querySelector('.down').innerHTML = `There are no prior pictures taken<br>by the camera this day.`
+  if (rndm + 1 == picArray.length) {
+    const prevPic = picArray[0]
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
+    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   } else {
     const prevPic = picArray[rndm + 1]
     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
@@ -59,7 +63,7 @@ const addPics = (picArray) => {
     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   }
   
-
+  
 }
 
 
@@ -79,14 +83,65 @@ button.addEventListener('click', (e) => {
 })
 
 //cycling through to the next and prior photos w/in the array
-//pop to get the current photo's index
+//this is why I set the pictures array & rndm# as var; to gain access to them on the global scale
 const next = document.querySelector('.up')
 const previous = document.querySelector('.down')
 
-next.addEventListener('click', (e) => {
-  e.preventDefault()
+// next.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   removePicture()
+//   rndm -= 1
+//   const rndmPhoto = pictures[rndm]
+//   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+//   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+//   console.log(`rndm # = ${rndm}`)
+//     if (rndm - 1 == -1) {
+//       document.querySelector('.up').innerHTML = `Above is the last photo taken<br>by the camera this day.`
+//     } else {
+//       const nextPic = picArray[rndm -1]
+//       let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+//       document.querySelector('.up').innerHTML = `Next Photo<br>`
+//       document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+//     }
 
-})
+//     if (rndm + 1 > picArray.lenght) {
+//       document.querySelector('.down').innerHTML = `There are no prior pictures taken<br>by the camera this day.`
+//     } else {
+//       const prevPic = picArray[rndm + 1]
+//       let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+//       document.querySelector('.down').innerHTML = `Previous Photo<br>`
+//       document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+//     }
+
+// })
+
+// previous.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   removePicture()
+//   rndm += 1
+//   const rndmPhoto = pictures[rndm]
+//   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+//   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+//   console.log(`rndm # = ${rndm}`)
+//     if (rndm - 1 == -1) {
+//       document.querySelector('.up').innerHTML = `Above is the last photo taken<br>by the camera this day.`
+//     } else {
+//       const nextPic = picArray[rndm -1]
+//       let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+//       document.querySelector('.up').innerHTML = `Next Photo<br>`
+//       document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+//     }
+
+//     if (rndm + 1 > picArray.lenght) {
+//       document.querySelector('.down').innerHTML = `There are no prior pictures taken<br>by the camera this day.`
+//     } else {
+//       const prevPic = picArray[rndm + 1]
+//       let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+//       document.querySelector('.down').innerHTML = `Previous Photo<br>`
+//       document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+//     }
+
+// })
 
 
 const camText = () => {
