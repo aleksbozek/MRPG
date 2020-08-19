@@ -1,19 +1,21 @@
 
 //
 
-async function getPic(year, month, day, camera) {
+async function getPics(year, month, day, camera) {
   // const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&camera=${camera}&api_key=DEMO_KEY`
   const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&camera=${camera}&api_key=OY0d1uLC5e9CAOmUwsog61HM4LT5YdDYU0Ngtq73`
   try {
     removePicture()
     const res = await axios.get(url)
-    console.log(res)
-    var pictures = res.data.photos
+    // console.log(res)
+    const pictures = res.data.photos
     console.log(pictures)
-    addPics(pictures)
+    const rndm = Math.floor((Math.random() * pictures.length))
+    addPics(pictures, rndm)
     // pictures.push(rndm)
-    console.log(pictures)
-    return pictures
+    const picArray = {pictures, rndm}
+    console.log(picArray)
+    return picArray
   } catch (error) {
     console.log(`Error: ${error}`)
   }
@@ -30,8 +32,8 @@ function removePicture() {
 }
 
 
-const addPics = (picArray) => {
-  var rndm = Math.floor((Math.random() * picArray.length))
+const addPics = (picArray, rndm) => {
+  
   console.log(rndm)
   const rndmPhoto = picArray[rndm]
   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
@@ -69,77 +71,81 @@ const addPics = (picArray) => {
 
 
 
-const button = document.querySelector('button')
 
-//executes the search!
-button.addEventListener('click', (e) => {
-  e.preventDefault()
-  const y = document.querySelector('#select-year').value
-  const m = document.querySelector('#select-month').value
-  const d = document.querySelector('#select-day').value
-  const c = document.querySelector('#select-cam').value
-  console.log(`year:${y} month:${m} day:${d} cam:${c}}`)
-  getPic(y, m, d, c)
-})
 
 //cycling through to the next and prior photos w/in the array
-//this is why I set the pictures array & rndm# as var; to gain access to them on the global scale
 const next = document.querySelector('.up')
 const previous = document.querySelector('.down')
 
-// next.addEventListener('click', (e) => {
+// next.addEventListener('click', (e, info) => {
 //   e.preventDefault()
 //   removePicture()
-//   rndm -= 1
-//   const rndmPhoto = pictures[rndm]
+//   info.rndm -= 1
+//   const rndmPhoto = info.pictures[info.rndm]
 //   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
 //   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
 //   console.log(`rndm # = ${rndm}`)
-//     if (rndm - 1 == -1) {
-//       document.querySelector('.up').innerHTML = `Above is the last photo taken<br>by the camera this day.`
-//     } else {
-//       const nextPic = picArray[rndm -1]
-//       let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-//       document.querySelector('.up').innerHTML = `Next Photo<br>`
-//       document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-//     }
+  
+//   if (info.rndm - 1 == -1) {
+//     const rndmN = info.pictures.length - 1
+//     const nextPic = info.pictures[rndmN]
+//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
+//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+//   } else {
+//     const nextPic = info.pictures[info.rndm -1]
+//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.up').innerHTML = `Next Photo<br>`
+//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+//   }
 
-//     if (rndm + 1 > picArray.lenght) {
-//       document.querySelector('.down').innerHTML = `There are no prior pictures taken<br>by the camera this day.`
-//     } else {
-//       const prevPic = picArray[rndm + 1]
-//       let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-//       document.querySelector('.down').innerHTML = `Previous Photo<br>`
-//       document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-//     }
+//   if (info.rndm + 1 == info.pictures.length) {
+//     const prevPic = info.pictures[0]
+//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
+//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+//   } else {
+//     const prevPic = info.pictures[info.rndm + 1]
+//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.down').innerHTML = `Previous Photo<br>`
+//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+//   }
 
 // })
 
-// previous.addEventListener('click', (e) => {
+// previous.addEventListener('click', (e, info) => {
 //   e.preventDefault()
 //   removePicture()
-//   rndm += 1
-//   const rndmPhoto = pictures[rndm]
+//   info.rndm += 1
+//   const rndmPhoto = info.pictures[info.rndm]
 //   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
 //   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
 //   console.log(`rndm # = ${rndm}`)
-//     if (rndm - 1 == -1) {
-//       document.querySelector('.up').innerHTML = `Above is the last photo taken<br>by the camera this day.`
-//     } else {
-//       const nextPic = picArray[rndm -1]
-//       let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-//       document.querySelector('.up').innerHTML = `Next Photo<br>`
-//       document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-//     }
+  
+//   if (info.rndm - 1 == -1) {
+//     const rndmN = info.pictures.length - 1
+//     const nextPic = info.pictures[rndmN]
+//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
+//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+//   } else {
+//     const nextPic = info.pictures[info.rndm -1]
+//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.up').innerHTML = `Next Photo<br>`
+//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+//   }
 
-//     if (rndm + 1 > picArray.lenght) {
-//       document.querySelector('.down').innerHTML = `There are no prior pictures taken<br>by the camera this day.`
-//     } else {
-//       const prevPic = picArray[rndm + 1]
-//       let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-//       document.querySelector('.down').innerHTML = `Previous Photo<br>`
-//       document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-//     }
+//   if (info.rndm + 1 == info.pictures.length) {
+//     const prevPic = info.pictures[0]
+//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
+//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+//   } else {
+//     const prevPic = info.pictures[info.rndm + 1]
+//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+//     document.querySelector('.down').innerHTML = `Previous Photo<br>`
+//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+//   }
 
 // })
 
@@ -170,3 +176,25 @@ camBox.addEventListener('mouseout', camText)
 // This was going to be where days dropdown options changed based on month
 
 // })
+
+
+
+
+
+
+
+const button = document.querySelector('button')
+
+//executes the search!
+button.addEventListener('click', (e) => {
+  e.preventDefault()
+  const y = document.querySelector('#select-year').value
+  const m = document.querySelector('#select-month').value
+  const d = document.querySelector('#select-day').value
+  const c = document.querySelector('#select-cam').value
+  console.log(`year:${y} month:${m} day:${d} cam:${c}}`)
+  var info = getPics(y, m, d, c)
+  setTimeout(() => {
+    console.log(info)
+  }, 3000)
+})
