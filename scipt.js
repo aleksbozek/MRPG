@@ -6,15 +6,22 @@ async function getPics(year, month, day, camera) {
   const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&camera=${camera}&api_key=OY0d1uLC5e9CAOmUwsog61HM4LT5YdDYU0Ngtq73`
   try {
     removePicture()
+
     const res = await axios.get(url)
     // console.log(res)
     const pictures = res.data.photos
-    console.log(pictures)
+    // console.log(pictures)
     const rndm = Math.floor((Math.random() * pictures.length))
     addPics(pictures, rndm)
-    // pictures.push(rndm)
-    const picArray = {pictures, rndm}
-    console.log(picArray)
+    const picArray = { pictures, rndm }
+
+    // const globalCatch = document.querySelector('article')
+    // while (globalCatch.lastChild) {
+    //   globalCatch.removeChild(globalCatch.lastChild)
+    // }
+    // globalCatch.insertAdjacentElement('beforeend', picArray)
+    // console.log(globalCatch.lastChild)
+    // console.log(picArray)
     return picArray
   } catch (error) {
     console.log(`Error: ${error}`)
@@ -34,7 +41,7 @@ function removePicture() {
 
 const addPics = (picArray, rndm) => {
   
-  console.log(rndm)
+  // console.log(rndm)
   const rndmPhoto = picArray[rndm]
   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
@@ -43,24 +50,24 @@ const addPics = (picArray, rndm) => {
   if (rndm - 1 == -1) {
     const rndmN = picArray.length - 1
     const nextPic = picArray[rndmN]
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: auto">`
     document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   } else {
     const nextPic = picArray[rndm -1]
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: auto">`
     document.querySelector('.up').innerHTML = `Next Photo<br>`
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   }
 
   if (rndm + 1 == picArray.length) {
     const prevPic = picArray[0]
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: auto">`
     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   } else {
     const prevPic = picArray[rndm + 1]
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: auto">`
     document.querySelector('.down').innerHTML = `Previous Photo<br>`
     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   }
@@ -77,77 +84,81 @@ const addPics = (picArray, rndm) => {
 const next = document.querySelector('.up')
 const previous = document.querySelector('.down')
 
-// next.addEventListener('click', (e, info) => {
-//   e.preventDefault()
-//   removePicture()
-//   info.rndm -= 1
-//   const rndmPhoto = info.pictures[info.rndm]
-//   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
-//   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-//   console.log(`rndm # = ${rndm}`)
+next.addEventListener('click', (e) => {
+  e.preventDefault()
+  removePicture()
+  // const info = document.querySelector('article').lastElementChild
+  info.rndm -= 1
+  const rndmPhoto = info.pictures[info.rndm]
+
+  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+  document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  console.log(`rndm # = ${rndm}`)
   
-//   if (info.rndm - 1 == -1) {
-//     const rndmN = info.pictures.length - 1
-//     const nextPic = info.pictures[rndmN]
-//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
-//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-//   } else {
-//     const nextPic = info.pictures[info.rndm -1]
-//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.up').innerHTML = `Next Photo<br>`
-//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-//   }
+  if (info.rndm - 1 == -1) {
+    const rndmN = info.pictures.length - 1
+    const nextPic = info.pictures[rndmN]
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
+    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+  } else {
+    const nextPic = info.pictures[info.rndm -1]
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.up').innerHTML = `Next Photo<br>`
+    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+  }
 
-//   if (info.rndm + 1 == info.pictures.length) {
-//     const prevPic = info.pictures[0]
-//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
-//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-//   } else {
-//     const prevPic = info.pictures[info.rndm + 1]
-//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.down').innerHTML = `Previous Photo<br>`
-//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-//   }
+  if (info.rndm + 1 == info.pictures.length) {
+    const prevPic = info.pictures[0]
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
+    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+  } else {
+    const prevPic = info.pictures[info.rndm + 1]
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.down').innerHTML = `Previous Photo<br>`
+    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+  }
 
-// })
+})
 
-// previous.addEventListener('click', (e, info) => {
-//   e.preventDefault()
-//   removePicture()
-//   info.rndm += 1
-//   const rndmPhoto = info.pictures[info.rndm]
-//   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
-//   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-//   console.log(`rndm # = ${rndm}`)
+previous.addEventListener('click', (e) => {
+  e.preventDefault()
+  removePicture()
+  // const info = document.querySelector('article').lastElementChild
+  info.rndm += 1
+  const rndmPhoto = info.pictures[info.rndm]
+
+  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+  document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  console.log(`rndm # = ${rndm}`)
   
-//   if (info.rndm - 1 == -1) {
-//     const rndmN = info.pictures.length - 1
-//     const nextPic = info.pictures[rndmN]
-//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
-//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-//   } else {
-//     const nextPic = info.pictures[info.rndm -1]
-//     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.up').innerHTML = `Next Photo<br>`
-//     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
-//   }
+  if (info.rndm - 1 == -1) {
+    const rndmN = info.pictures.length - 1
+    const nextPic = info.pictures[rndmN]
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
+    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+  } else {
+    const nextPic = info.pictures[info.rndm -1]
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.up').innerHTML = `Next Photo<br>`
+    document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
+  }
 
-//   if (info.rndm + 1 == info.pictures.length) {
-//     const prevPic = info.pictures[0]
-//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
-//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-//   } else {
-//     const prevPic = info.pictures[info.rndm + 1]
-//     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
-//     document.querySelector('.down').innerHTML = `Previous Photo<br>`
-//     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
-//   }
+  if (info.rndm + 1 == info.pictures.length) {
+    const prevPic = info.pictures[0]
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
+    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+  } else {
+    const prevPic = info.pictures[info.rndm + 1]
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    document.querySelector('.down').innerHTML = `Previous Photo<br>`
+    document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
+  }
 
-// })
+})
 
 
 const camText = () => {
@@ -170,18 +181,11 @@ const camBox = document.querySelector('#select-cam')
 camBox.addEventListener('mouseout', camText)
 
 
-// const monthSelected = document.getElementById('#select-month')
+// const globalTest = () => {
 
-// monthSelected.addEventListener('change', () => {
-// This was going to be where days dropdown options changed based on month
+//   console.log(info)
 
-// })
-
-
-
-
-
-
+// }
 
 const button = document.querySelector('button')
 
@@ -194,7 +198,8 @@ button.addEventListener('click', (e) => {
   const c = document.querySelector('#select-cam').value
   console.log(`year:${y} month:${m} day:${d} cam:${c}}`)
   var info = getPics(y, m, d, c)
-  setTimeout(() => {
-    console.log(info)
-  }, 3000)
+  // setTimeout(() => {
+  //   console.log(info)
+  //   globalTest()
+  // }, 3000)
 })
