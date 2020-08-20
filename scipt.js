@@ -1,5 +1,7 @@
 
-//
+////set these to var to allow access across all functions
+var rndm = 0
+var info = {}
 
 async function getPics(year, month, day, camera) {
   // const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&camera=${camera}&api_key=DEMO_KEY`
@@ -8,20 +10,11 @@ async function getPics(year, month, day, camera) {
     removePicture()
 
     const res = await axios.get(url)
-    // console.log(res)
     const pictures = res.data.photos
-    // console.log(pictures)
-    const rndm = Math.floor((Math.random() * pictures.length))
+    rndm = Math.floor((Math.random() * pictures.length))
     addPics(pictures, rndm)
     const picArray = { pictures, rndm }
-
-    // const globalCatch = document.querySelector('article')
-    // while (globalCatch.lastChild) {
-    //   globalCatch.removeChild(globalCatch.lastChild)
-    // }
-    // globalCatch.insertAdjacentElement('beforeend', picArray)
-    // console.log(globalCatch.lastChild)
-    // console.log(picArray)
+    info = picArray
     return picArray
   } catch (error) {
     console.log(`Error: ${error}`)
@@ -38,14 +31,13 @@ function removePicture() {
   }
 }
 
-
+// Initial picture(s) get displayed from this function; which is invoked during the async try
 const addPics = (picArray, rndm) => {
   
   // console.log(rndm)
   const rndmPhoto = picArray[rndm]
   let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-  // console.log(`rndm # = ${rndm}`)
 
   if (rndm - 1 == -1) {
     const rndmN = picArray.length - 1
@@ -80,22 +72,29 @@ const addPics = (picArray, rndm) => {
 
 
 
-//cycling through to the next and prior photos w/in the array
+//cycling through to the next and prior photos upon click
+// Key difference between these two is  -=  &  +=
 const next = document.querySelector('.up')
 const previous = document.querySelector('.down')
-
+//when user clicks the picture in the bottom left
 next.addEventListener('click', (e) => {
   e.preventDefault()
   removePicture()
-  // const info = document.querySelector('article').lastElementChild
   info.rndm -= 1
-  const rndmPhoto = info.pictures[info.rndm]
-
-  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
-  document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-  console.log(`rndm # = ${rndm}`)
+ 
+  if (info.rndm == -1) {
+    info.rndm = info.pictures.length -1
+    const rndmPhoto = info.pictures[info.rndm]
+    console.log(`cycle to last photo value is ${rndmPhoto}; info.pictures.length =${info.pictures.length}; info.rndm should be one less than prior # ~ ${info.rndm}`)
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  } else {
+    const rndmPhoto = info.pictures[info.rndm]
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  }
   
-  if (info.rndm - 1 == -1) {
+  if (info.rndm - 1 == -1 || info.rndm -1 == -2) {
     const rndmN = info.pictures.length - 1
     const nextPic = info.pictures[rndmN]
     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
@@ -108,7 +107,7 @@ next.addEventListener('click', (e) => {
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   }
 
-  if (info.rndm + 1 == info.pictures.length) {
+  if (info.rndm + 1 == info.pictures.length || info.rndm > info.pictures.length) {
     const prevPic = info.pictures[0]
     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
@@ -121,19 +120,24 @@ next.addEventListener('click', (e) => {
   }
 
 })
-
+//when user clicks bottom right
 previous.addEventListener('click', (e) => {
   e.preventDefault()
   removePicture()
-  // const info = document.querySelector('article').lastElementChild
   info.rndm += 1
-  const rndmPhoto = info.pictures[info.rndm]
 
-  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
-  document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
-  console.log(`rndm # = ${rndm}`)
+  if (info.rndm >= info.pictures.length) {
+    info.rndm = 0
+    const rndmPhoto = info.pictures[info.rndm]
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  } else {
+    const rndmPhoto = info.pictures[info.rndm]
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+  }
   
-  if (info.rndm - 1 == -1) {
+  if (info.rndm - 1 == -1 || info.rndm -1 == -2) {
     const rndmN = info.pictures.length - 1
     const nextPic = info.pictures[rndmN]
     let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
@@ -146,7 +150,7 @@ previous.addEventListener('click', (e) => {
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   }
 
-  if (info.rndm + 1 == info.pictures.length) {
+  if (info.rndm + 1 == info.pictures.length || info.rndm > info.pictures.length) {
     const prevPic = info.pictures[0]
     let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
@@ -161,6 +165,7 @@ previous.addEventListener('click', (e) => {
 })
 
 
+//Camera description changing is invoked with the next available const below this function.
 const camText = () => {
   const camDes = document.querySelector('#cam-hover')
   const c = document.querySelector('#select-cam').value
@@ -189,7 +194,7 @@ camBox.addEventListener('mouseout', camText)
 
 const button = document.querySelector('button')
 
-//executes the search!
+//Executes the search!  I'm putting this on the bottom to ensure all other code is registered as being present.
 button.addEventListener('click', (e) => {
   e.preventDefault()
   const y = document.querySelector('#select-year').value
@@ -197,7 +202,8 @@ button.addEventListener('click', (e) => {
   const d = document.querySelector('#select-day').value
   const c = document.querySelector('#select-cam').value
   console.log(`year:${y} month:${m} day:${d} cam:${c}}`)
-  var info = getPics(y, m, d, c)
+  getPics(y, m, d, c)
+  // info = getPics(y, m, d, c)
   // setTimeout(() => {
   //   console.log(info)
   //   globalTest()
