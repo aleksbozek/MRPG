@@ -5,6 +5,7 @@ p,li,div{
   color: silver;
 
 }
+
 .title {
   display: block;
   border: 3px solid rgb(28, 28, 184);
@@ -35,9 +36,16 @@ height: 415px;
 }
 #cam-hover{
   order:1;
+  font-size: 20px;
+  padding: 5px 10vw;
+  border: 1px dotted silver;
+  margin: 5px 10vw;
 }
 #display{
   order:2;
+}
+#count{
+  order:3;
 }
 .next{
   

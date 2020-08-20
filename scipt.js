@@ -2,6 +2,11 @@
 ////set these to var to allow access across all functions
 var rndm = 0
 var info = {}
+var photoNum = {
+  current: 0,
+  total: 0
+}
+var count = document.querySelector('#count')
 
 async function getPics(year, month, day, camera) {
   // const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&camera=${camera}&api_key=DEMO_KEY`
@@ -12,6 +17,10 @@ async function getPics(year, month, day, camera) {
     const res = await axios.get(url)
     const pictures = res.data.photos
     rndm = Math.floor((Math.random() * pictures.length))
+    photoNum.current = rndm + 1
+    photoNum.total = pictures.length
+    count.innerHTML = `Photo # ${photoNum.current}/${photoNum.total}`
+    console.log(`rndm:${rndm} current:${photoNum.current} total: ${photoNum.total}`)
     addPics(pictures, rndm)
     const picArray = { pictures, rndm }
     info = picArray
@@ -67,101 +76,111 @@ const addPics = (picArray, rndm) => {
   
 }
 
-
-
-
-
-
-//cycling through to the next and prior photos upon click
-// Key difference between these two is  -=  &  +=
 const next = document.querySelector('.up')
 const previous = document.querySelector('.down')
+//cycling through to the next and prior photos upon click
+// Key difference between these two is  -=  &  += for the original random number prior to contingency checks
+
 //when user clicks the picture in the bottom left
 next.addEventListener('click', (e) => {
   e.preventDefault()
   removePicture()
   info.rndm -= 1
- 
+    //this IF checks whether the displayed picture is the first index
   if (info.rndm == -1) {
     info.rndm = info.pictures.length -1
     const rndmPhoto = info.pictures[info.rndm]
-    console.log(`cycle to last photo value is ${rndmPhoto}; info.pictures.length =${info.pictures.length}; info.rndm should be one less than prior # ~ ${info.rndm}`)
     let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+    photoNum.current = info.pictures.length
+    console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
   } else {
     const rndmPhoto = info.pictures[info.rndm]
     let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+    photoNum.current -= 1
+    console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
   }
-  
+    //this IF checks whether the new Next is the first index
   if (info.rndm - 1 == -1 || info.rndm -1 == -2) {
     const rndmN = info.pictures.length - 1
     const nextPic = info.pictures[rndmN]
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   } else {
     const nextPic = info.pictures[info.rndm -1]
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.up').innerHTML = `Next Photo<br>`
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   }
-
+    //this IF checks for going from first index to last
   if (info.rndm + 1 == info.pictures.length || info.rndm > info.pictures.length) {
     const prevPic = info.pictures[0]
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   } else {
     const prevPic = info.pictures[info.rndm + 1]
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.down').innerHTML = `Previous Photo<br>`
     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   }
-
+  if (photoNum.current == 0) {
+    photoNum.current = photoNum.total
+  }
+  count.innerHTML = `Photo # ${photoNum.current}/${photoNum.total}`
 })
+
 //when user clicks bottom right
 previous.addEventListener('click', (e) => {
   e.preventDefault()
   removePicture()
   info.rndm += 1
-
+    //checks for current display whether it's the last index
   if (info.rndm >= info.pictures.length) {
     info.rndm = 0
     const rndmPhoto = info.pictures[info.rndm]
     let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+    photoNum.current = 1
+    console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
   } else {
     const rndmPhoto = info.pictures[info.rndm]
     let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
+    photoNum.current += 1
+    console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
   }
-  
+    //checks the new next thumbnail
   if (info.rndm - 1 == -1 || info.rndm -1 == -2) {
     const rndmN = info.pictures.length - 1
     const nextPic = info.pictures[rndmN]
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.up').innerHTML = `Cycled to last photo<br>`
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   } else {
     const nextPic = info.pictures[info.rndm -1]
-    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureN = `<img src=${nextPic.img_src} alt="Photo ID #${nextPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.up').innerHTML = `Next Photo<br>`
     document.querySelector('.up').insertAdjacentHTML('beforeend', pictureN)
   }
-
+    //checks the new previous thumbnail
   if (info.rndm + 1 == info.pictures.length || info.rndm > info.pictures.length) {
     const prevPic = info.pictures[0]
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.down').innerHTML = `Cycled to first photo<br>`
     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   } else {
     const prevPic = info.pictures[info.rndm + 1]
-    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 15vw; height: 15vh">`
+    let pictureP = `<img src=${prevPic.img_src} alt="Photo ID #${prevPic.id}" style="width: 17vw; height: auto">`
     document.querySelector('.down').innerHTML = `Previous Photo<br>`
     document.querySelector('.down').insertAdjacentHTML('beforeend', pictureP)
   }
-
+  if (photoNum.current == 0) {
+    photoNum.current = photoNum.total
+  }
+  count.innerHTML = `Photo # ${photoNum.current}/${photoNum.total}`
 })
 
 
