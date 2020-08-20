@@ -66,15 +66,15 @@ https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.pn
 **MVP:**
 
 - Website layout is clean
-- dropdown selector for the different cameras
+- dropdown selector for the different cameras √
 - dropdown selectors for date, where the days of given month are accurate
-- able to navigate directly forward or backward of current photo
-- provide descriptions of the cameras aka their purpose
+- able to navigate directly forward or backward of current photo √
+- provide descriptions of the cameras aka their purpose √
 
 **Post-MVP:**
 
 - dropdown selector for totally random photo from the day in question(no need to be specific with cameras)
-- next & previous photo have a thumbnail preview
+- next & previous photo have a thumbnail preview √
 - leap years have Feb 29th option in dropdown selector
 - dropdown selector for Opportunity & Spirit rovers
 
@@ -100,14 +100,14 @@ Objective | Priority | Estimated Time | Time Invested | Actual Time
 ------------ | ------------- | ------------- | ------------- | -------------
 Citing Credits | L |30 minutes | 5min | ??
 Media Query Styling | H | 2 hours | 1.5hrs | ??
-HTML Skeleton | M | 1 hour | 1.5hrs | ??
+HTML Skeleton | M | 1 hour | 2hrs | ??
 API Link With Multiple Variables Functions | H | 3 hours | 1.5 hrs | ??
 Dropdown Selectors w/in Flexbox | H | 2.5 hours | 2 hrs | ??
 Camera Description Hover Event Listeners | L | 2 hours | 45min | ??
-Background Styling | L | 1 hour | 30min | ??
-Button Styling | M | 3 hours | 1.5hrs | ??
+Background Styling | L | 1 hour | 45min | ??
+Button Styling | M | 3 hours | 2hrs | ??
 Dropdown Selector Boxes Cooperating With API | H | 3 hours | 1.5hrs | ??
 Next & Previous Photo | H | 3 hours | 8hrs(an oversight had me stumped for all of 8/19) | ??
-Post Minimum Viable Product Goals | L | 5 hours | ?? | ??
+Post Minimum Viable Product Goals | L | 5 hours | 1hr | ??
 Reviewing Tutorials | H | 5 hours | 6hrs | ??
 End : | (H)igh (M)edium (L)ow | ~31 hours | ?? | ??

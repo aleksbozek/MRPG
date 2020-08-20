@@ -1,24 +1,32 @@
 
 ////set these to var to allow access across all functions
-var rndm = 0
-var info = {}
+var rndm = 0 //the original random number which gets generated when Search is clicked
+var info = {}//used for the initial picture display
 var photoNum = {
-  current: 0,
+  current: 0,//displays picture # / #
   total: 0
 }
-var count = document.querySelector('#count')
+var count = document.querySelector('#count')// is where # / # gets displayed
 
 async function getPics(year, month, day, camera) {
   // const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&camera=${camera}&api_key=DEMO_KEY`
   const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${year}-${month}-${day}&camera=${camera}&api_key=OY0d1uLC5e9CAOmUwsog61HM4LT5YdDYU0Ngtq73`
   try {
-    removePicture()
-
     const res = await axios.get(url)
     const pictures = res.data.photos
     rndm = Math.floor((Math.random() * pictures.length))
     photoNum.current = rndm + 1
     photoNum.total = pictures.length
+    console.log(pictures)
+    //checks whethers pictures were taken given search parameters
+    if (pictures.length == 0) {
+      let picture = `<img src='https://i.imgur.com/WXC6zDR.jpg' alt="No photos taken by the camera this day" style="width: 75vw; height: auto">`
+      const photo = document.querySelector('#display')
+      photo.removeChild(photo.lastChild)
+      photo.insertAdjacentHTML('beforeend', picture)
+    } else {
+      removePicture()
+    }
     count.innerHTML = `Photo # ${photoNum.current}/${photoNum.total}`
     console.log(`rndm:${rndm} current:${photoNum.current} total: ${photoNum.total}`)
     addPics(pictures, rndm)
@@ -29,6 +37,8 @@ async function getPics(year, month, day, camera) {
     console.log(`Error: ${error}`)
   }
 }
+
+//utilized during cycling through next & previous photos
 function removePicture() {
   const photo = document.querySelector('#display')
   const photo2 = document.querySelector('.up')
@@ -45,7 +55,7 @@ const addPics = (picArray, rndm) => {
   
   // console.log(rndm)
   const rndmPhoto = picArray[rndm]
-  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 50vw; height: auto">`
   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
 
   if (rndm - 1 == -1) {
@@ -222,9 +232,4 @@ button.addEventListener('click', (e) => {
   const c = document.querySelector('#select-cam').value
   console.log(`year:${y} month:${m} day:${d} cam:${c}}`)
   getPics(y, m, d, c)
-  // info = getPics(y, m, d, c)
-  // setTimeout(() => {
-  //   console.log(info)
-  //   globalTest()
-  // }, 3000)
 })

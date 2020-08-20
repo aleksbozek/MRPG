@@ -5,21 +5,30 @@ p,li,div{
   color: silver;
 
 }
-
+body{
+  background-image: url('https://cdn.mos.cms.futurecdn.net/vF2iCQbygk5PEQADvAJzF8-1024-80.jpg');
+  height: 100vh;
+  width: 100vw;
+}
 .title {
+  margin: 1vh 1vw;
+  padding: 1vh 1vw;
+  color: rgb(111, 162, 153);
   display: block;
   border: 3px solid rgb(28, 28, 184);
   text-align: center;
   font-size: 35px;
-  color: black;
+  font-weight: bolder;
+  text-shadow: 1px 1px 15px rgb(210, 210, 210);
 }
 .description{
-  width: 65vw;
+  color: rgb(111, 162, 153);
+  width: 50vw;
   font-size: 20px;
   text-align: justify;
-  color: black;
   padding: 5vh 5vw;
   margin: 2vh auto;
+  text-shadow: 1px 1px 5px rgb(34, 77, 69);
 }
 .selector,
 button{
@@ -30,7 +39,7 @@ button{
 
 }
 ul{
-order:0;
+order:-1;
 width: 215px;
 height: 415px;
 }
@@ -46,6 +55,7 @@ height: 415px;
 }
 #count{
   order:3;
+  font-size: 25px;
 }
 .next{
   
@@ -84,11 +94,15 @@ footer{
   margin: 420px auto;
   text-align: center;
   background-color: silver;
-  border: 2px dotted black;
+  border: 2px dotted gray;
 }
 
-@media (min-width: 1500px){
+@media (min-width: 900px){
 
+  .title{
+    margin: 3vh 3vw;
+    padding: 3vh 3vw;
+  }
   #selector-holder{
     flex-flow: column wrap;
     width: 200px;
@@ -97,7 +111,7 @@ footer{
 
   .description{
     padding: 10vh 10vw;
-    margin: 7vh 7vw;
+    margin: 7vh auto;
   }
 
   ul{
