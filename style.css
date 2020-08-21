@@ -11,7 +11,7 @@ body{
   width: 100vw;
 }
 .title {
-  margin: 1vh 1vw;
+  margin: 3vh 3vw;
   padding: 1vh 1vw;
   color: rgb(111, 162, 153);
   display: block;
@@ -20,15 +20,14 @@ body{
   font-size: 35px;
   font-weight: bolder;
   text-shadow: 1px 1px 15px rgb(210, 210, 210);
+  background-color: black;
 }
 .description{
-  color: rgb(111, 162, 153);
   width: 50vw;
   font-size: 20px;
   text-align: justify;
   padding: 5vh 5vw;
   margin: 2vh auto;
-  text-shadow: 1px 1px 5px rgb(34, 77, 69);
 }
 .selector,
 button{
@@ -38,29 +37,28 @@ button{
   flex-flow: row wrap;
 
 }
-ul{
-order:-1;
-width: 215px;
-height: 415px;
+button{
+  font-weight: bold;
 }
 #cam-hover{
   order:1;
   font-size: 20px;
-  padding: 5px 10vw;
+  padding: 2vh 10vw;
   border: 1px dotted silver;
   margin: 5px 10vw;
+  font-weight: bold;
 }
 #display{
   order:2;
 }
 #count{
-  order:3;
+  order:1;
   font-size: 25px;
 }
 .next{
   
   display: inline-block;
-  margin: auto 7vw;
+  margin: 1vh 5vw;
   color: black;
   border: 2px dotted gray;
   padding: 50px 7vw;
@@ -81,8 +79,12 @@ aside{
   background-color: black;
   border: 3px dotted white;
   padding: 3px;
-  justify-content: space-around;
+  justify-content: space-between;
   order:1;
+}
+#selector-holder{
+  background-color: rgb(28, 28, 184);
+  text-shadow: 2px 2px 5px rgb(0,0,0);
 }
 
 #select-month,
@@ -97,25 +99,71 @@ footer{
   border: 2px dotted gray;
 }
 
+ul{
+  order:-1;
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  background-color: rgb(28, 28, 184);
+  text-shadow: 2px 2px 5px rgb(0,0,0);
+  }
+  
 @media (min-width: 900px){
 
   .title{
-    margin: 3vh 3vw;
+    margin: 5vh 5vw;
     padding: 3vh 3vw;
+    font-size: 42px;
+    border: 5px solid rgb(28, 28, 184);
   }
   #selector-holder{
     flex-flow: column wrap;
+    justify-content: space-around;
     width: 200px;
     height: auto;
   }
-
   .description{
-    padding: 10vh 10vw;
+    padding: 8vh 8vw;
     margin: 7vh auto;
+    font-size: 25px;
   }
-
+  #cam-hover{
+    font-size: 23px;
+  }
   ul{
-    order: -1;
+    font-size: 22px;
   }
+  .next{
+    margin: 2vh 7vw;
+  }
+  footer{
+    border: 4px dotted gray;
+  }
+}
 
+@media (min-width: 1400px){
+
+  .title{
+    margin: 7vh 7vw;
+    padding: 4vh 4vw;
+    font-size: 47px;
+    border: 7px solid rgb(28, 28, 184);
+  }
+  #selector-holder{
+    justify-content: space-evenly;
+  }
+  .description{
+    padding: 8vh 8vw;
+    margin: 7vh auto;
+    font-size: 28px;
+  }
+  #cam-hover{
+    font-size: 26px;
+  }
+  .next{
+    margin: 3vh 9vw;
+  }
+  footer{
+    border: 6px dotted gray;
+  }
 }

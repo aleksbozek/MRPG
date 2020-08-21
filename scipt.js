@@ -55,7 +55,7 @@ const addPics = (picArray, rndm) => {
   
   // console.log(rndm)
   const rndmPhoto = picArray[rndm]
-  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 50vw; height: auto">`
+  let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 65vw; height: auto">`
   document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
 
   if (rndm - 1 == -1) {
@@ -100,13 +100,13 @@ next.addEventListener('click', (e) => {
   if (info.rndm == -1) {
     info.rndm = info.pictures.length -1
     const rndmPhoto = info.pictures[info.rndm]
-    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 65vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
     photoNum.current = info.pictures.length
     console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
   } else {
     const rndmPhoto = info.pictures[info.rndm]
-    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 65vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
     photoNum.current -= 1
     console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
@@ -151,13 +151,13 @@ previous.addEventListener('click', (e) => {
   if (info.rndm >= info.pictures.length) {
     info.rndm = 0
     const rndmPhoto = info.pictures[info.rndm]
-    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 65vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
     photoNum.current = 1
     console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
   } else {
     const rndmPhoto = info.pictures[info.rndm]
-    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 75vw; height: auto">`
+    let picture = `<img src=${rndmPhoto.img_src} alt="Photo ID #${rndmPhoto.id}" style="width: 65vw; height: auto">`
     document.querySelector('#display').insertAdjacentHTML('beforeend', picture)
     photoNum.current += 1
     console.log(`rndm:${info.rndm} current:${photoNum.current} total: ${photoNum.total}`)
