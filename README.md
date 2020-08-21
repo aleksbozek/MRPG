@@ -98,16 +98,16 @@ F 8/21/20 | Profit | ??
 
 Objective | Priority | Estimated Time | Time Invested | Actual Time
 ------------ | ------------- | ------------- | ------------- | -------------
-Citing Credits | L |30 minutes | 10min | ??
-Media Query Styling | H | 2 hours | 2hrs | ??
-HTML Skeleton | M | 1 hour | 2hrs | ??
-API Link With Multiple Variables Functions | H | 3 hours | 1.5 hrs | ??
-Dropdown Selectors w/in Flexbox | H | 2.5 hours | 2 hrs | ??
-Camera Description Hover Event Listeners | L | 2 hours | 45min | ??
-Background Styling | L | 1 hour | 1hr | ??
-Button Styling | M | 3 hours | 2.5hrs | ??
-Dropdown Selector Boxes Cooperating With API | H | 3 hours | 1.5hrs | ??
-Next & Previous Photo | H | 3 hours | 8hrs(an oversight had me stumped for all of 8/19) | ??
-Post Minimum Viable Product Goals | L | 5 hours | 1.5hr | ??
-Reviewing Tutorials | H | 5 hours | 6hrs | ??
-End : | (H)igh (M)edium (L)ow | ~31 hours | ~29.5 hours | ??
+Citing Credits | L |30 minutes | 10min | -20min
+Media Query Styling | H | 2 hours | 2hrs | par
+HTML Skeleton | M | 1 hour | 2hrs | +1hr
+API Link With Multiple Variables Functions | H | 3 hours | 1.5 hrs | -1.5hrs
+Dropdown Selectors w/in Flexbox | H | 2.5 hours | 2 hrs | -30min
+Camera Description Hover Event Listeners | L | 2 hours | 45min | -1.25hrs
+Background Styling | L | 1 hour | 1hr | par
+Button Styling | M | 3 hours | 3hrs | par
+Dropdown Selector Boxes Cooperating With API | H | 3 hours | 1.5hrs | -1.5 hrs
+Next & Previous Photo | H | 3 hours | 8hrs(an oversight had me stumped for all of 8/19) | +5hrs
+Post Minimum Viable Product Goals | L | 5 hours | 3.5hr | -1.5hrs
+Reviewing Tutorials | H | 5 hours | 6hrs | +1hr
+End : | (H)igh (M)edium (L)ow | ~31 hours | ~32 hours | Over by 1 hour of estimate
