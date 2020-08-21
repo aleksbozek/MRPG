@@ -65,16 +65,16 @@ https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.pn
 
 **MVP:**
 
-- Website layout is clean √
-- dropdown selector for the different cameras √
+- √ Website layout is clean
+- √ dropdown selector for the different cameras
 - dropdown selectors for date, where the days of given month are accurate
-- able to navigate directly forward or backward of current photo √
-- provide descriptions of the cameras aka their purpose √
+- √ able to navigate directly forward or backward of current photo
+- √ provide descriptions of the cameras aka their purpose
 
 **Post-MVP:**
 
-- dropdown selector for totally random photo from the day in question(no need to be specific with cameras)
-- next & previous photo have a thumbnail preview √
+- √ dropdown selector for totally random photo from the day in question(no need to be specific with cameras)
+- √ next & previous photo have a thumbnail preview
 - leap years have Feb 29th option in dropdown selector
 - dropdown selector for Opportunity & Spirit rovers
 
@@ -108,6 +108,6 @@ Background Styling | L | 1 hour | 1hr | ??
 Button Styling | M | 3 hours | 2.5hrs | ??
 Dropdown Selector Boxes Cooperating With API | H | 3 hours | 1.5hrs | ??
 Next & Previous Photo | H | 3 hours | 8hrs(an oversight had me stumped for all of 8/19) | ??
-Post Minimum Viable Product Goals | L | 5 hours | 1hr | ??
+Post Minimum Viable Product Goals | L | 5 hours | 1.5hr | ??
 Reviewing Tutorials | H | 5 hours | 6hrs | ??
-End : | (H)igh (M)edium (L)ow | ~31 hours | ~29 hours | ??
+End : | (H)igh (M)edium (L)ow | ~31 hours | ~29.5 hours | ??
