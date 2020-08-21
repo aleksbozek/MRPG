@@ -65,7 +65,7 @@ https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.pn
 
 **MVP:**
 
-- Website layout is clean
+- Website layout is clean √
 - dropdown selector for the different cameras √
 - dropdown selectors for date, where the days of given month are accurate
 - able to navigate directly forward or backward of current photo √
@@ -86,9 +86,9 @@ https://hosting.photobucket.com/images/l66/aabozek/wireframe_white_background.pn
 Day | Objective | Status
 ------------ | ------------- | -------------
 M 8/17/20 | Website skeleton; get API search variables in url working | Complete
-T 8/18/20 | Dropdown selectors as flex boxes; @media layout | 3/4 done~ postponing media til JS is finalized
+T 8/18/20 | Dropdown selectors as flex boxes; @media layout | Complete
 W 8/19/20 | Navigating next / previous photo; minor styling | Complete
-T 8/20/20 | Clean up site w/ css; tackle any loose ends; attempt post-mvp | Ongoing
+T 8/20/20 | Clean up site w/ css; tackle any loose ends; attempt post-mvp | Complete
 F 8/21/20 | Profit | ??
 
 **Priority Matrix:**
@@ -98,16 +98,16 @@ F 8/21/20 | Profit | ??
 
 Objective | Priority | Estimated Time | Time Invested | Actual Time
 ------------ | ------------- | ------------- | ------------- | -------------
-Citing Credits | L |30 minutes | 5min | ??
-Media Query Styling | H | 2 hours | 1.5hrs | ??
+Citing Credits | L |30 minutes | 10min | ??
+Media Query Styling | H | 2 hours | 2hrs | ??
 HTML Skeleton | M | 1 hour | 2hrs | ??
 API Link With Multiple Variables Functions | H | 3 hours | 1.5 hrs | ??
 Dropdown Selectors w/in Flexbox | H | 2.5 hours | 2 hrs | ??
 Camera Description Hover Event Listeners | L | 2 hours | 45min | ??
-Background Styling | L | 1 hour | 45min | ??
-Button Styling | M | 3 hours | 2hrs | ??
+Background Styling | L | 1 hour | 1hr | ??
+Button Styling | M | 3 hours | 2.5hrs | ??
 Dropdown Selector Boxes Cooperating With API | H | 3 hours | 1.5hrs | ??
 Next & Previous Photo | H | 3 hours | 8hrs(an oversight had me stumped for all of 8/19) | ??
 Post Minimum Viable Product Goals | L | 5 hours | 1hr | ??
 Reviewing Tutorials | H | 5 hours | 6hrs | ??
-End : | (H)igh (M)edium (L)ow | ~31 hours | ?? | ??
+End : | (H)igh (M)edium (L)ow | ~31 hours | ~29 hours | ??
